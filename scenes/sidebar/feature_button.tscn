@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://csquanwavdlm"]
+
+[ext_resource type="Script" uid="uid://bevnubl23vqda" path="res://scripts/sidebar/feature_button.gd" id="1_1qan3"]
+[ext_resource type="Texture2D" uid="uid://igjssixoudv1" path="res://assets/sidebar/button_small.png" id="2_iochp"]
+
+[node name="FeatureButton" type="Node2D"]
+script = ExtResource("1_1qan3")
+
+[node name="Background" type="TextureButton" parent="."]
+offset_right = 33.0
+offset_bottom = 17.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_iochp")
+
+[node name="Icon" type="TextureRect" parent="Background"]
+layout_mode = 1
+offset_right = 33.0
+offset_bottom = 17.0
+stretch_mode = 2
