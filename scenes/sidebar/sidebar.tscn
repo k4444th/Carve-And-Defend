@@ -1,16 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwylkefq1hfnr"]
+[gd_scene load_steps=6 format=3 uid="uid://cwylkefq1hfnr"]
 
 [ext_resource type="Texture2D" uid="uid://ddfx5vbf8da8t" path="res://assets/sidebar/background.png" id="1_hvnx7"]
-[ext_resource type="Texture2D" uid="uid://dk6gg57cg6tjr" path="res://assets/sidebar/button_large.png" id="2_80ds7"]
-[ext_resource type="Texture2D" uid="uid://cheowrvn3kk11" path="res://assets/sidebar/eyes_label.png" id="3_7s0wd"]
-[ext_resource type="Texture2D" uid="uid://4w0745ploypr" path="res://assets/sidebar/Buttons_Arrow.png" id="4_mt2qc"]
+[ext_resource type="Script" uid="uid://b6txmg0cuc3v6" path="res://scenes/sidebar/sidebar.gd" id="1_kv346"]
+[ext_resource type="PackedScene" uid="uid://d2e7ob60vixjg" path="res://scenes/sidebar/option_selection.tscn" id="3_x4u8e"]
 [ext_resource type="PackedScene" uid="uid://csquanwavdlm" path="res://scenes/sidebar/feature_button.tscn" id="5_80ds7"]
-[ext_resource type="Texture2D" uid="uid://dp1go5uoc0kop" path="res://assets/sidebar/eyes_1_shadow.png" id="6_bl180"]
-[ext_resource type="Texture2D" uid="uid://mpu30qmaauwd" path="res://assets/sidebar/eyes_2_shadow.png" id="7_px00g"]
-[ext_resource type="Texture2D" uid="uid://b0jupb0q6raxq" path="res://assets/sidebar/eyes_3_shadow.png" id="8_q5nq2"]
-[ext_resource type="Texture2D" uid="uid://xehsm3oour04" path="res://assets/sidebar/eyes_4_shadow.png" id="9_m4hxg"]
+[ext_resource type="PackedScene" uid="uid://b5d34dnjvx1yr" path="res://scenes/sidebar/pumpkin_preview.tscn" id="10_80ds7"]
 
 [node name="Sidebar" type="Node2D"]
+script = ExtResource("1_kv346")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -20,60 +17,32 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -97.0
+offset_left = -388.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("1_hvnx7")
 stretch_mode = 4
 
-[node name="OptionSelection" type="Node2D" parent="UI/WoodTexture"]
+[node name="OptionSelection" parent="UI/WoodTexture" instance=ExtResource("3_x4u8e")]
 position = Vector2(64, 132)
-
-[node name="FeatureLabel" type="TextureRect" parent="UI/WoodTexture/OptionSelection"]
-offset_left = 32.0
-offset_right = 81.0
-offset_bottom = 17.0
-scale = Vector2(4, 4)
-texture = ExtResource("2_80ds7")
-stretch_mode = 2
-
-[node name="LabelText" type="TextureRect" parent="UI/WoodTexture/OptionSelection/FeatureLabel"]
-layout_mode = 0
-offset_right = 49.0
-offset_bottom = 17.0
-texture = ExtResource("3_7s0wd")
-stretch_mode = 2
-
-[node name="ArrowLeft" type="TextureButton" parent="UI/WoodTexture/OptionSelection"]
-offset_top = 16.0
-offset_right = 6.0
-offset_bottom = 25.0
-scale = Vector2(4, 4)
-texture_normal = ExtResource("4_mt2qc")
-
-[node name="ArrowRight" type="TextureButton" parent="UI/WoodTexture/OptionSelection"]
-offset_left = 236.0
-offset_top = 16.0
-offset_right = 242.0
-offset_bottom = 25.0
-scale = Vector2(4, 4)
-texture_normal = ExtResource("4_mt2qc")
-flip_h = true
 
 [node name="FeatureOptions" type="Node2D" parent="UI/WoodTexture"]
 position = Vector2(52, 240)
 
 [node name="Option1" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
-iconPath = ExtResource("6_bl180")
 
 [node name="Option2" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
 position = Vector2(152, 0)
-iconPath = ExtResource("7_px00g")
+iconId = 1
 
 [node name="Option3" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
 position = Vector2(0, 84)
-iconPath = ExtResource("8_q5nq2")
+iconId = 2
 
 [node name="Option4" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
 position = Vector2(152, 84)
-iconPath = ExtResource("9_m4hxg")
+iconId = 3
+
+[node name="PumpkinPreview" parent="UI/WoodTexture" instance=ExtResource("10_80ds7")]
+position = Vector2(92, 408)
+scale = Vector2(4, 4)

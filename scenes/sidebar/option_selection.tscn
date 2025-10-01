@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2e7ob60vixjg"]
+
+[ext_resource type="Script" uid="uid://du27xlrmw50tb" path="res://scenes/sidebar/option_selection.gd" id="1_iqy3a"]
+[ext_resource type="Texture2D" uid="uid://dk6gg57cg6tjr" path="res://assets/sidebar/button_large.png" id="1_q68pr"]
+[ext_resource type="Texture2D" uid="uid://cheowrvn3kk11" path="res://assets/sidebar/eyes_label.png" id="2_iqy3a"]
+[ext_resource type="Texture2D" uid="uid://4w0745ploypr" path="res://assets/sidebar/Buttons_Arrow.png" id="3_g2c8f"]
+
+[node name="OptionSelection" type="Node2D"]
+script = ExtResource("1_iqy3a")
+
+[node name="FeatureLabel" type="TextureRect" parent="."]
+offset_left = 32.0
+offset_right = 81.0
+offset_bottom = 17.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_q68pr")
+stretch_mode = 2
+
+[node name="LabelText" type="TextureRect" parent="FeatureLabel"]
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 17.0
+texture = ExtResource("2_iqy3a")
+stretch_mode = 2
+
+[node name="ArrowLeft" type="TextureButton" parent="."]
+offset_top = 16.0
+offset_right = 6.0
+offset_bottom = 25.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_g2c8f")
+
+[node name="ArrowRight" type="TextureButton" parent="."]
+offset_left = 236.0
+offset_top = 16.0
+offset_right = 242.0
+offset_bottom = 25.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_g2c8f")
+flip_h = true
+
+[connection signal="pressed" from="ArrowLeft" to="." method="_on_arrow_left_pressed"]
+[connection signal="pressed" from="ArrowRight" to="." method="_on_arrow_right_pressed"]

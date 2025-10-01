@@ -1,9 +1,39 @@
 extends Node2D
 
-@export var iconPath: Resource
+signal selectionChanged(featureId: int, iconId: int)
 
-@onready var icon: TextureRect = $Background/Icon
+@export var featureId: int
+@export var iconId: int
+
+@onready var iconNode: TextureRect = $Background/Icon
+
+var featurePaths := [
+	[
+	"res://assets/sidebar/eyes_1_shadow.png",
+	"res://assets/sidebar/eyes_2_shadow.png",
+	"res://assets/sidebar/eyes_3_shadow.png",
+	"res://assets/sidebar/eyes_4_shadow.png"
+	],
+	[
+	"res://assets/sidebar/nose_1_shadow.png",
+	"res://assets/sidebar/nose_2_shadow.png",
+	"res://assets/sidebar/nose_3_shadow.png",
+	"res://assets/sidebar/nose_4_shadow.png"
+	],
+	[
+	"res://assets/sidebar/mouth_1_shadow.png",
+	"res://assets/sidebar/mouth_2_shadow.png",
+	"res://assets/sidebar/mouth_3_shadow.png",
+	"res://assets/sidebar/mouth_4_shadow.png"
+	]
+]
 
 func _ready() -> void:
-	icon.texture = iconPath
-	
+	iconNode.texture = load(featurePaths[featureId][iconId])
+
+func _on_background_pressed() -> void:
+	selectionChanged.emit(featureId, iconId)
+
+func changeFeature(id):
+	featureId = id
+	iconNode.texture = load(featurePaths[featureId][iconId])
