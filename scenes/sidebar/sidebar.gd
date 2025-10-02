@@ -11,14 +11,11 @@ func _ready() -> void:
 	optionSelectionNode.connect("featureChanged", changeFeature)
 	for option in featureOptions:
 		option.connect("selectionChanged", changePumpkinLook)
-		option.connect("focusChanged", displayParchmentRoll)
 
 func changePumpkinLook(featureId, iconId):
 	pumpkinPreviewNode.changeLook(featureId, iconId)
+	parchmentRoll.changeFeature(featureId, iconId)
 
 func changeFeature(featureId):
 	for option in featureOptions:
 		option.changeFeature(featureId)
-
-func displayParchmentRoll(inFocus: bool, featureId: int, iconId: int):
-	parchmentRoll.display(inFocus, featureId, iconId)

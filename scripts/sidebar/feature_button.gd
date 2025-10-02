@@ -1,7 +1,6 @@
 extends Node2D
 
 signal selectionChanged(featureId: int, iconId: int)
-signal focusChanged(inFocus: bool, featureId: int, iconId: int)
 
 @export var featureId: int
 @export var iconId: int
@@ -38,9 +37,3 @@ func _on_background_pressed() -> void:
 func changeFeature(id):
 	featureId = id
 	iconNode.texture = load(featurePaths[featureId][iconId])
-
-func _on_background_mouse_entered() -> void:
-	focusChanged.emit(true, featureId, iconId)
-
-func _on_background_mouse_exited() -> void:
-	focusChanged.emit(false, featureId, iconId)

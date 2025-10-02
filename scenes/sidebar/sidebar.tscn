@@ -49,4 +49,4 @@ position = Vector2(92, 408)
 scale = Vector2(4, 4)
 
 [node name="ParchmentRoll" parent="UI" instance=ExtResource("6_kgru8")]
-position = Vector2(1084, 236)
+position = Vector2(640, 12)
