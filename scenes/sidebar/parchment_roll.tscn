@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvvqalosauxu5"]
+
+[ext_resource type="Texture2D" uid="uid://bggu14xo2c1ld" path="res://assets/sidebar/parchment_roll.png" id="1_ederu"]
+[ext_resource type="Script" uid="uid://c4qnyb34nao8c" path="res://scenes/sidebar/parchment_roll.gd" id="1_ucsgf"]
+
+[node name="ParchmentRoll" type="Node2D"]
+script = ExtResource("1_ucsgf")
+
+[node name="Background" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(40, 20)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_ederu")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(160, 80)
+offset_right = 160.0
+offset_bottom = 160.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 36
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.101961, 0.054902, 0.0784314, 1)
+theme_override_font_sizes/font_size = 16
+text = "Text"
+autowrap_mode = 2

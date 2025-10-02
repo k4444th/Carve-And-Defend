@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwylkefq1hfnr"]
+[gd_scene load_steps=7 format=3 uid="uid://cwylkefq1hfnr"]
 
 [ext_resource type="Texture2D" uid="uid://ddfx5vbf8da8t" path="res://assets/sidebar/background.png" id="1_hvnx7"]
 [ext_resource type="Script" uid="uid://b6txmg0cuc3v6" path="res://scenes/sidebar/sidebar.gd" id="1_kv346"]
 [ext_resource type="PackedScene" uid="uid://d2e7ob60vixjg" path="res://scenes/sidebar/option_selection.tscn" id="3_x4u8e"]
 [ext_resource type="PackedScene" uid="uid://csquanwavdlm" path="res://scenes/sidebar/feature_button.tscn" id="5_80ds7"]
+[ext_resource type="PackedScene" uid="uid://dvvqalosauxu5" path="res://scenes/sidebar/parchment_roll.tscn" id="6_kgru8"]
 [ext_resource type="PackedScene" uid="uid://b5d34dnjvx1yr" path="res://scenes/sidebar/pumpkin_preview.tscn" id="10_80ds7"]
 
 [node name="Sidebar" type="Node2D"]
@@ -46,3 +47,6 @@ iconId = 3
 [node name="PumpkinPreview" parent="UI/WoodTexture" instance=ExtResource("10_80ds7")]
 position = Vector2(92, 408)
 scale = Vector2(4, 4)
+
+[node name="ParchmentRoll" parent="UI" instance=ExtResource("6_kgru8")]
+position = Vector2(1084, 236)
