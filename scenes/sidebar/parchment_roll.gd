@@ -33,6 +33,9 @@ var featureTexts := [
 
 func _ready() -> void:
 	labelNode.text = textTemplate
+	backgroundNode.size.y = 60
+	expandButtonNode.position.y = 250
+	
 
 func changeFeature(featureId: int, iconId: int):
 	if featureId == 0:
@@ -84,7 +87,7 @@ func _on_timer_timeout() -> void:
 	else:
 		var currentText = labelNode.text
 		if currentText.length() <= textTemplate.length():
-			currentText = textTemplate.left(labelNode.text.length() + 3)
+			currentText = textTemplate.left(labelNode.text.length() + 1)
 			labelNode.text = currentText
 			timerNode.start()
 		
