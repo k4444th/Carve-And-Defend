@@ -13,40 +13,40 @@ script = ExtResource("1_kv346")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="WoodTexture" type="TextureRect" parent="UI"]
-custom_minimum_size = Vector2(388, 720)
+custom_minimum_size = Vector2(194, 720)
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -388.0
+offset_left = -97.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("1_hvnx7")
 stretch_mode = 4
 
 [node name="OptionSelection" parent="UI/WoodTexture" instance=ExtResource("3_x4u8e")]
-position = Vector2(64, 132)
+position = Vector2(26, 122)
 
 [node name="FeatureOptions" type="Node2D" parent="UI/WoodTexture"]
-position = Vector2(52, 240)
+position = Vector2(38, 207)
 
 [node name="Option1" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
 
 [node name="Option2" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
-position = Vector2(152, 0)
+position = Vector2(0, 82)
 iconId = 1
 
 [node name="Option3" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
-position = Vector2(0, 84)
+position = Vector2(0, 162)
 iconId = 2
 
 [node name="Option4" parent="UI/WoodTexture/FeatureOptions" instance=ExtResource("5_80ds7")]
-position = Vector2(152, 84)
+position = Vector2(0, 242)
 iconId = 3
 
 [node name="PumpkinPreview" parent="UI/WoodTexture" instance=ExtResource("10_80ds7")]
-position = Vector2(92, 408)
-scale = Vector2(4, 4)
+position = Vector2(48, 520)
+scale = Vector2(2, 2)
 
 [node name="ParchmentRoll" parent="UI" instance=ExtResource("6_kgru8")]
-position = Vector2(640, 12)
+position = Vector2(914, 12)

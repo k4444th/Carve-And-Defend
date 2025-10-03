@@ -9,9 +9,9 @@ script = ExtResource("1_ucsgf")
 
 [node name="Background" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(60, 20)
-offset_right = 40.0
+offset_right = 80.0
 offset_bottom = 70.0
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 texture = ExtResource("1_ederu")
 patch_margin_left = 10
 patch_margin_top = 10
@@ -19,13 +19,13 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(160, 80)
-offset_right = 241.0
-offset_bottom = 280.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 36
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 36
+custom_minimum_size = Vector2(160, 60)
+offset_right = 160.0
+offset_bottom = 140.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 16
 
 [node name="Label" type="Label" parent="MarginContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -38,12 +38,12 @@ text = "
 autowrap_mode = 2
 
 [node name="ExpandButton" type="TextureButton" parent="."]
-offset_left = 144.0
-offset_top = 288.0
-offset_right = 150.0
-offset_bottom = 297.0
+offset_left = 95.0
+offset_top = 144.0
+offset_right = 101.0
+offset_bottom = 153.0
 rotation = 1.5708
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("3_1lrie")
 flip_v = true
 

@@ -33,9 +33,8 @@ var featureTexts := [
 
 func _ready() -> void:
 	labelNode.text = textTemplate
-	backgroundNode.size.y = 60
-	expandButtonNode.position.y = 250
-	
+	backgroundNode.size.y = 110
+	expandButtonNode.position.y = 229
 
 func changeFeature(featureId: int, iconId: int):
 	if featureId == 0:
@@ -55,8 +54,8 @@ func changeFeature(featureId: int, iconId: int):
 		var sizeTweenBackground = get_tree().create_tween()
 		var positionTweenButton = get_tree().create_tween()
 		
-		sizeTweenBackground.tween_property(backgroundNode, "size:y", int((labelNode.get_minimum_size().y) / 3) + 4, 0.25)
-		positionTweenButton.tween_property(expandButtonNode, "position:y", labelNode.get_minimum_size().y + 84, 0.25)
+		sizeTweenBackground.tween_property(backgroundNode, "size:y", int((labelNode.get_minimum_size().y) / 1.75) + 4, 0.25)
+		positionTweenButton.tween_property(expandButtonNode, "position:y", labelNode.get_minimum_size().y + 42, 0.25)
 	
 func _on_expand_button_pressed() -> void:
 	truncated = !truncated
@@ -65,11 +64,11 @@ func _on_expand_button_pressed() -> void:
 	
 	if truncated:
 		sizeTweenBackground.tween_property(backgroundNode, "size:y", 20, 0.5)
-		positionTweenButton.tween_property(expandButtonNode, "position:y", 88, 0.5)
+		positionTweenButton.tween_property(expandButtonNode, "position:y", 44, 0.5)
 	else:
 		labelNode.text = textTemplate
-		sizeTweenBackground.tween_property(backgroundNode, "size:y", int((labelNode.get_minimum_size().y) / 3) + 4, 0.5)
-		positionTweenButton.tween_property(expandButtonNode, "position:y", labelNode.get_minimum_size().y + 84, 0.5)
+		sizeTweenBackground.tween_property(backgroundNode, "size:y", int((labelNode.get_minimum_size().y) / 1.75) + 4, 0.5)
+		positionTweenButton.tween_property(expandButtonNode, "position:y", labelNode.get_minimum_size().y + 42, 0.5)
 		labelNode.text = ""
 		
 	timerNode.start()

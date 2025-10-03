@@ -5,35 +5,36 @@ signal selectionChanged(featureId: int, iconId: int)
 @export var featureId: int
 @export var iconId: int
 
-@onready var iconNode: TextureRect = $Background/Icon
+@onready var iconNode: TextureRect = $TextureButton/Background/Icon
 
 var featurePaths := [
 	[
-	"res://assets/sidebar/eyes_1_shadow.png",
-	"res://assets/sidebar/eyes_2_shadow.png",
-	"res://assets/sidebar/eyes_3_shadow.png",
-	"res://assets/sidebar/eyes_4_shadow.png"
+	"res://assets/pumpkin/eyes_1.png",
+	"res://assets/pumpkin/eyes_2.png",
+	"res://assets/pumpkin/eyes_3.png",
+	"res://assets/pumpkin/eyes_4.png"
 	],
 	[
-	"res://assets/sidebar/nose_1_shadow.png",
-	"res://assets/sidebar/nose_2_shadow.png",
-	"res://assets/sidebar/nose_3_shadow.png",
-	"res://assets/sidebar/nose_4_shadow.png"
+	"res://assets/pumpkin/nose_1.png",
+	"res://assets/pumpkin/nose_2.png",
+	"res://assets/pumpkin/nose_3.png",
+	"res://assets/pumpkin/nose_4.png"
 	],
 	[
-	"res://assets/sidebar/mouth_1_shadow.png",
-	"res://assets/sidebar/mouth_2_shadow.png",
-	"res://assets/sidebar/mouth_3_shadow.png",
-	"res://assets/sidebar/mouth_4_shadow.png"
+	"res://assets/pumpkin/mouth_1.png",
+	"res://assets/pumpkin/mouth_2.png",
+	"res://assets/pumpkin/mouth_3.png",
+	"res://assets/pumpkin/mouth_4.png"
 	]
 ]
 
 func _ready() -> void:
 	iconNode.texture = load(featurePaths[featureId][iconId])
 
-func _on_background_pressed() -> void:
-	selectionChanged.emit(featureId, iconId)
-
 func changeFeature(id):
 	featureId = id
 	iconNode.texture = load(featurePaths[featureId][iconId])
+	iconNode.position.y = -6.5 - featureId * 6.5
+
+func _on_texture_button_pressed() -> void:
+	selectionChanged.emit(featureId, iconId)
