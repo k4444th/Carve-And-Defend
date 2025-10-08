@@ -1,7 +1,8 @@
 extends Node2D
 
-var truncated := false
+signal expandedParchmentPaper(truncated: bool)
 
+var truncated := false
 var textTemplate: String = "Eyes:\nDouble damage to undead\n\nNose:\n+1 damage\n\nMouth:\nFire (best against vampires)"
 
 @onready var backgroundNode: NinePatchRect = $Background
@@ -58,6 +59,7 @@ func changeFeature(featureId: int, iconId: int):
 		positionTweenButton.tween_property(expandButtonNode, "position:y", labelNode.get_minimum_size().y + 42, 0.25)
 	
 func _on_expand_button_pressed() -> void:
+	expandedParchmentPaper.emit(truncated)
 	truncated = !truncated
 	var sizeTweenBackground = get_tree().create_tween()
 	var positionTweenButton = get_tree().create_tween()
@@ -89,5 +91,3 @@ func _on_timer_timeout() -> void:
 			currentText = textTemplate.left(labelNode.text.length() + 1)
 			labelNode.text = currentText
 			timerNode.start()
-		
-	
