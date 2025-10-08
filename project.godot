@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Carve&Defend"
-run/main_scene="uid://cwylkefq1hfnr"
+run/main_scene="uid://kqroqbboeinp"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/use_filter=false
 boot_splash/image="uid://d4efmiukvd4p4"

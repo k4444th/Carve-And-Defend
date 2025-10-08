@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://drg2fx75ygek7"]
+
+[ext_resource type="Script" uid="uid://dhbhm7sqgvda2" path="res://scripts/world/pumpkin.gd" id="1_hawvn"]
+[ext_resource type="Texture2D" uid="uid://bnujs5x185vlu" path="res://assets/pumpkin/pumpkin_base.png" id="1_nrsp8"]
+[ext_resource type="Texture2D" uid="uid://btn71elu1ebu4" path="res://assets/pumpkin/pumpkin_greenery.png" id="2_hawvn"]
+[ext_resource type="Texture2D" uid="uid://bxymv4y75pv87" path="res://assets/pumpkin/eyes_glow_1.png" id="3_0oyb2"]
+[ext_resource type="Texture2D" uid="uid://b4xyaqywn5kvy" path="res://assets/pumpkin/nose_glow_1.png" id="4_0mqcy"]
+[ext_resource type="Texture2D" uid="uid://y3rlo6od0kq8" path="res://assets/pumpkin/mouth_glow_1.png" id="5_82di5"]
+[ext_resource type="Texture2D" uid="uid://blftt5ktr17k2" path="res://assets/pumpkin/eyes_1.png" id="6_cs1yd"]
+[ext_resource type="Texture2D" uid="uid://jeac0vni0p4d" path="res://assets/pumpkin/nose_1.png" id="7_ihb26"]
+[ext_resource type="Texture2D" uid="uid://dqerdwnc0tsnm" path="res://assets/pumpkin/mouth_1.png" id="8_gj5ii"]
+
+[node name="Pumpkin" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_hawvn")
+
+[node name="Pumpkin" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_nrsp8")
+
+[node name="Greenery" type="TextureRect" parent="."]
+offset_right = 50.0
+offset_bottom = 50.0
+pivot_offset = Vector2(1524, 827)
+texture = ExtResource("2_hawvn")
+
+[node name="Glow" type="Node2D" parent="."]
+
+[node name="Eyes" type="TextureRect" parent="Glow"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("3_0oyb2")
+
+[node name="Nose" type="TextureRect" parent="Glow"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_0mqcy")
+
+[node name="Mouth" type="TextureRect" parent="Glow"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_82di5")
+
+[node name="Features" type="Node2D" parent="."]
+
+[node name="Eyes" type="TextureRect" parent="Features"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("6_cs1yd")
+
+[node name="Nose" type="TextureRect" parent="Features"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_ihb26")
+
+[node name="Mouth" type="TextureRect" parent="Features"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_gj5ii")
+
+[node name="Overlay" type="ColorRect" parent="."]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 46.0
+offset_bottom = 43.0
+color = Color(0.701961, 0.654902, 0.12549, 0.498039)

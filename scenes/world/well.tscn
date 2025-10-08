@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8msdxaqpdhx3"]
+
+[ext_resource type="Texture2D" uid="uid://bcn2bbv7ucajv" path="res://assets/world/Well.png" id="1_gli41"]
+
+[node name="Well" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_gli41")

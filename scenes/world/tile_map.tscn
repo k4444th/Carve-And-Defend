@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=4 uid="uid://q80gdrth2gs"]
+
+[ext_resource type="Texture2D" uid="uid://btalf2purbt6u" path="res://assets/world/Game_Grid.png" id="1_tjuek"]
+[ext_resource type="Script" uid="uid://do881unr6n0ma" path="res://scripts/world/texture_rect.gd" id="2_effrm"]
+[ext_resource type="Texture2D" uid="uid://b8qy800x4mu1c" path="res://assets/world/tile.png" id="2_epimf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_effrm"]
+texture = ExtResource("2_epimf")
+texture_region_size = Vector2i(96, 96)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g5fis"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetAtlasSource_effrm")
+
+[node name="TileMap" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_tjuek")
+script = ExtResource("2_effrm")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(14, 23)
+tile_map_data = PackedByteArray("AAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_g5fis")
+rendering_quadrant_size = 49
+
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect" to="." method="_on_texture_rect_mouse_exited"]
