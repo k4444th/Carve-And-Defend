@@ -5,7 +5,8 @@
 [node name="Well" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(-50, 0)
+offset_left = -100.0
+offset_top = -100.0
 scale = Vector2(2, 2)
 texture = ExtResource("1_gli41")

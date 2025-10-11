@@ -12,6 +12,7 @@ var parchmentPaperButtonPos: Array[Rect2] = [Rect2(Vector2(980, 50), Vector2(30,
 @onready var pumpkinsContainerNode := $Pumpkins
 @onready var sidebarOptionsNodes := $Sidebar.find_child("FeatureOptions").get_children()
 @onready var parchmentRoll := $Sidebar.find_child("ParchmentRoll")
+@onready var enemiesContainerNode := $Enemies
 
 func _ready() -> void:
 	parchmentRoll.connect("expandedParchmentPaper", toggleParchmentPaperExpanded)
@@ -29,7 +30,7 @@ func _input(event):
 	if event is InputEventMouseMotion and fieldRect.has_point(event.position):
 		var currentPumpkin = pumpkinsContainerNode.get_children()[pumpkinsContainerNode.get_child_count() - 1]
 		if mousePosInField(event.position):
-			if tileMapNode.get_cell_atlas_coords(tileMapNode.local_to_map(event.position)).x < 0:
+			if tileMapNode.get_cell_atlas_coords(tileMapNode.local_to_map(event.position)).x > 0:
 				currentPumpkin.setPosition(tileMapNode.map_to_local(tileMapNode.local_to_map(event.position)), true)
 				lastPumpkinPos = tileMapNode.map_to_local(tileMapNode.local_to_map(event.position))
 			else:
@@ -44,9 +45,13 @@ func _input(event):
 			if (parchmentPaperExpanded and parchmentPaperButtonPos[1].has_point(event.position)) or (!parchmentPaperExpanded and parchmentPaperButtonPos[0].has_point(event.position)):
 					allowPlacement = false
 			
-			if allowPlacement and tileMapNode.get_cell_atlas_coords(tileMapNode.local_to_map(event.position)).x < 0:
+			if allowPlacement and tileMapNode.get_cell_atlas_coords(tileMapNode.local_to_map(event.position)).x > 0:
 				currentPumpkin.setPosition(tileMapNode.map_to_local(tileMapNode.local_to_map(event.position)), false)
 				tileMapNode.set_cell(tileMapNode.local_to_map(event.position), 0, Vector2i(0, 0))
+				
+				var enemies = enemiesContainerNode.get_children()
+				for enemy in enemies:
+					enemy.makePath()
 				
 				var newPumpkin = pumpkinScene.instantiate()
 				pumpkinsContainerNode.add_child(newPumpkin)
