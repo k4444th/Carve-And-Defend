@@ -6,6 +6,7 @@ var lastPumpkinPos: Vector2
 var lastPumpkinLook := Vector3(0, 0, 0)
 var parchmentPaperExpanded: bool = true
 var pumpkinScene := load("res://scenes/world/pumpkin.tscn")
+var enemyScene := load("res://scenes/world/enemy.tscn")
 var parchmentPaperButtonPos: Array[Rect2] = [Rect2(Vector2(980, 50), Vector2(30, 20)), Rect2(Vector2(980, 240), Vector2(30, 20))]
 
 @onready var tileMapNode := $TileMap.get_children()[1]
@@ -13,11 +14,19 @@ var parchmentPaperButtonPos: Array[Rect2] = [Rect2(Vector2(980, 50), Vector2(30,
 @onready var sidebarOptionsNodes := $Sidebar.find_child("FeatureOptions").get_children()
 @onready var parchmentRoll := $Sidebar.find_child("ParchmentRoll")
 @onready var enemiesContainerNode := $Enemies
+@onready var wellNode: Node2D = $Well
+@onready var spawnTimerNode: Timer = $SpawnTimer
 
 func _ready() -> void:
 	parchmentRoll.connect("expandedParchmentPaper", toggleParchmentPaperExpanded)
+	
 	for option in sidebarOptionsNodes:
 		option.connect("selectionChanged", changePumpkinLook)
+	
+	var enemies = enemiesContainerNode.get_children()
+	for enemy in enemies:
+		enemy.destination = wellNode
+		enemy.makePath()
 
 func changePumpkinLook(featureId, iconId):
 	pumpkinsContainerNode.get_children()[pumpkinsContainerNode.get_child_count() - 1].changeLook(featureId, iconId)
@@ -51,6 +60,7 @@ func _input(event):
 				
 				var enemies = enemiesContainerNode.get_children()
 				for enemy in enemies:
+					enemy.destination = wellNode
 					enemy.makePath()
 				
 				var newPumpkin = pumpkinScene.instantiate()
@@ -63,3 +73,26 @@ func mousePosInField(mousePos: Vector2):
 	if mousePos.x > 16 and mapPos.x <= tileMapSize.x and mousePos.y > 22 and mapPos.y <= tileMapSize.y:
 		return true
 	return false
+
+func _on_spawn_timer_timeout() -> void:
+	var spawnPos: Vector2
+	
+	var side = randi() % 3
+	
+	match side:
+		0:
+			spawnPos.x = randf_range(0, 1086)
+			spawnPos.y = 720
+		1:
+			spawnPos.x = 0
+			spawnPos.y = randf_range(240, 720)
+		2:
+			spawnPos.x = 1086
+			spawnPos.y = randf_range(240, 720)
+	
+	var newEnemy = enemyScene.instantiate()
+	newEnemy.position = spawnPos
+	newEnemy.destination= wellNode
+	enemiesContainerNode.add_child(newEnemy)
+	newEnemy.makePath()
+	

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://kqroqbboeinp"]
+[gd_scene load_steps=6 format=3 uid="uid://kqroqbboeinp"]
 
 [ext_resource type="Script" uid="uid://6rx15n5cwuh" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b6ubei8jmx4rm" path="res://scenes/world/tile_map.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cwylkefq1hfnr" path="res://scenes/sidebar/sidebar.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c8msdxaqpdhx3" path="res://scenes/world/well.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://drg2fx75ygek7" path="res://scenes/world/pumpkin.tscn" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://ckvsss7wjpmmt" path="res://scenes/world/enemy.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
@@ -24,6 +23,8 @@ position = Vector2(13, 22)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("destination") instance=ExtResource("6_p57ef")]
-position = Vector2(572, 676)
-destination = NodePath("../../Well")
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

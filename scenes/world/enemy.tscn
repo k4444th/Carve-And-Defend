@@ -23,7 +23,4 @@ path_desired_distance = 100.0
 target_desired_distance = 50.0
 debug_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
