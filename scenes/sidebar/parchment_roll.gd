@@ -9,6 +9,7 @@ var textTemplate: String = "Eyes:\nDouble damage to undead\n\nNose:\n+1 damage\n
 @onready var textContainerNode: MarginContainer = $MarginContainer
 @onready var labelNode: Label = $MarginContainer/Label
 @onready var expandButtonNode: TextureButton = $ExpandButton
+@onready var timerNode: Timer = $Timer
 
 var featureTexts := [
 	[
@@ -72,5 +73,21 @@ func _on_expand_button_pressed() -> void:
 		positionTweenButton.tween_property(expandButtonNode, "position:y", labelNode.get_minimum_size().y + 42, 0.5)
 		labelNode.text = ""
 	
+	timerNode.start()
+	
 	await sizeTweenBackground.finished
 	expandButtonNode.flip_h = !expandButtonNode.flip_h
+
+func _on_timer_timeout() -> void:
+	if truncated:
+		var currentText = labelNode.text
+		if currentText.length() > 0:
+			currentText = currentText.left(currentText.length() - 3)
+			labelNode.text = currentText
+			timerNode.start()
+	else:
+		var currentText = labelNode.text
+		if currentText.length() <= textTemplate.length():
+			currentText = textTemplate.left(labelNode.text.length() + 1)
+			labelNode.text = currentText
+			timerNode.start()
